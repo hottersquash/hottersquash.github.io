@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>利用玩客云搭建个人博客hexo | Welcome to hottersquash&#39;blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="利用玩客云搭建个人博客hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用玩客云搭建个人博客hexo">
+<meta property="og:url" content="http://example.com/2022/interest/4d2352a0334c.html">
+<meta property="og:site_name" content="Welcome to hottersquash&#39;blog">
+<meta property="og:description" content="利用玩客云搭建个人博客hexo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picture-byan.obs.cn-east-3.myhuaweicloud.com/imgs_byan/image-20221207140823565.png">
+<meta property="og:image" content="https://picture-byan.obs.cn-east-3.myhuaweicloud.com/imgs_byan/image-20221209145815566.png">
+<meta property="article:published_time" content="2022-12-09T11:00:34.000Z">
+<meta property="article:modified_time" content="2022-12-10T04:29:45.485Z">
+<meta property="article:author" content="hottersquash">
+<meta property="article:tag" content="玩客云">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picture-byan.obs.cn-east-3.myhuaweicloud.com/imgs_byan/image-20221207140823565.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Welcome to hottersquash&#39;blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Welcome to hottersquash&#39;blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-利用玩客云搭建个人博客hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/interest/4d2352a0334c.html" class="article-date">
+  <time datetime="2022-12-09T11:00:34.000Z" itemprop="datePublished">2022-12-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/interest/">兴趣</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      利用玩客云搭建个人博客hexo
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>利用玩客云搭建个人博客hexo</p>
+<span id="more"></span>
+
+<h4 id="1、玩客云刷好Armbian5-9系统，最终效果如下图："><a href="#1、玩客云刷好Armbian5-9系统，最终效果如下图：" class="headerlink" title="1、玩客云刷好Armbian5.9系统，最终效果如下图："></a>1、玩客云刷好Armbian5.9系统，最终效果如下图：</h4><img src="https://picture-byan.obs.cn-east-3.myhuaweicloud.com/imgs_byan/image-20221207140823565.png" alt="image-20221207140823565" style="zoom: 80%;" />
+
+
+
+<h4 id="2、安装nodejs，hexo"><a href="#2、安装nodejs，hexo" class="headerlink" title="2、安装nodejs，hexo"></a>2、安装nodejs，hexo</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意安装armv7版本的node </span></span><br><span class="line">下载地址：https://nodejs.org/dist/v18.12.1/node-v18.12.1-linux-armv7l.tar.xz</span><br></pre></td></tr></table></figure>
+
+<p>其他步骤参考：</p>
+<h4 id="3、修改-config-yml文件部署到git上"><a href="#3、修改-config-yml文件部署到git上" class="headerlink" title="3、修改_config.yml文件部署到git上"></a>3、修改_config.yml文件部署到git上</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这里只截取关键配置，其他例如git的ssh访问自行百度</span></span><br><span class="line">deploy:</span><br><span class="line">	<span class="built_in">type</span>: git</span><br><span class="line">	repo: git@github.com:hottersquash/hottersquash.github.io.git</span><br><span class="line">	branch: main</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、最终效果图"><a href="#4、最终效果图" class="headerlink" title="4、最终效果图"></a>4、最终效果图</h4><p><img src="https://picture-byan.obs.cn-east-3.myhuaweicloud.com/imgs_byan/image-20221209145815566.png" alt="image-20221209145815566"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/interest/4d2352a0334c.html" data-id="clbhmxiyt0000aeip52h61xil" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wky/" rel="tag">玩客云</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/interest/094bdde988c1.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          联想潮5000蒙特雷黑苹果
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/interest/9ad475d771fa.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">玩客云部署leanote打造个人笔记系统</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/interest/">兴趣</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/wky/" rel="tag">玩客云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blackApple/" rel="tag">黑苹果</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/wky/" style="font-size: 20px;">玩客云</a> <a href="/tags/blackApple/" style="font-size: 10px;">黑苹果</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">十二月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/interest/eda55dee1d65.html">玩客云下编译comfast cf-811ac驱动实现wifi上网</a>
+          </li>
+        
+          <li>
+            <a href="/2022/interest/094bdde988c1.html">联想潮5000蒙特雷黑苹果</a>
+          </li>
+        
+          <li>
+            <a href="/2022/interest/4d2352a0334c.html">利用玩客云搭建个人博客hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2022/interest/9ad475d771fa.html">玩客云部署leanote打造个人笔记系统</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 hottersquash<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
