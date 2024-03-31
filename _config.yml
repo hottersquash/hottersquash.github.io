@@ -11,8 +11,6 @@ author: byan
 language: en
 timezone: 'Asia/Shanghai'
 
-
-root: /hexo-blog/ 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://hottersquash.github.io
