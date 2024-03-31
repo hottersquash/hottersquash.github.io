@@ -3,7 +3,7 @@
 hexo clean && hexo generate
 echo "生成html文件成功!"
 
-if [ "$0" == "preview" ];then
+if [[ "$0" == "preview" ]];then
 	hexo server
 	echo "----------------------------------------"
 	exit 0
