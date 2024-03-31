@@ -1,4 +1,4 @@
-!# /bin/bash
+#! /bin/bash
 
 hexo clean && hexo generate
 echo "生成html文件成功!"
