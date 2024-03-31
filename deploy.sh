@@ -3,6 +3,11 @@
 hexo clean && hexo generate
 echo "生成html文件成功!"
 
+if [ $0 = "preview" ];then
+	hexo server
+	exit
+fi
+
 hexo clean && hexo g -d
 echo "部署成功!"
 
