@@ -25,7 +25,7 @@
   <link rel="stylesheet" type="text/css" href="/./style/main.css">
 	<link rel="shortcut icon" href="/favicon.ico" title="Favicon">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-	<title>hexo部署脚本</title>
+	<title>记一次mysql远程访问权限问题.md</title>
   
   <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?awwssw1snsnsnn1ndndnndnd99j";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();
   </script>
@@ -48,7 +48,7 @@
     
   
   <h1 class="title">
-    hexo部署脚本
+    记一次mysql远程访问权限问题.md
   </h1>
   
 
@@ -56,11 +56,11 @@
     <ul class="article-info">
       <li>
         发布
-        <time datetime="2024-03-31T09:23:38.000Z" itemprop="datePublished">2024-03-31</time>
+        <time datetime="2024-04-21T08:32:32.000Z" itemprop="datePublished">2024-04-21</time>
       </li>
       <li>
         
-    更新 <time datetime="2024-04-21T09:51:08.821Z" itemprop="dateUpdated">2024-04-21</time>
+    更新 <time datetime="2024-04-21T11:09:05.336Z" itemprop="dateUpdated">2024-04-21</time>
 
       </li>
       <li id="busuanzi_container_page_pv">
@@ -72,9 +72,34 @@
     <div class="article">
       <div class="content">
         
-        <p>hexo 部署脚本（同步代码到master）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"></span><br><span class="line">hexo clean &amp;&amp; hexo generate</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;生成html文件成功!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">&quot;<span class="variable">$1</span>&quot;</span> == <span class="string">&quot;preview&quot;</span> ]];<span class="keyword">then</span></span><br><span class="line">	hexo server</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;----------------------------------------&quot;</span></span><br><span class="line">	<span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">hexo clean &amp;&amp; hexo g -d</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;部署成功!&quot;</span></span><br><span class="line"></span><br><span class="line">git checkout main </span><br><span class="line">git add . </span><br><span class="line">git commit -am <span class="variable">$&#123;0&#125;</span></span><br><span class="line">git push origin main</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;git同步成功!&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <p>今天装mariadb，准备开ipv6远程访问mysql，按照网上教程用命令开启：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on *.* to root@&quot;%&quot; identified by &quot;password&quot; with grant option;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
 
+
+
+<p>结果死活连不上，一直以为是<strong>ipv6的问题</strong>导致失败，于是修改配置文件<strong>50-server.cnf</strong>的bind-address为::</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">bind-address = ::</span><br></pre></td></tr></table></figure>
+
+
+
+<p>重启mysql，结果还是连不上，最后无奈，把日志打开，发现一直报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access denied <span class="keyword">for</span> user <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;xxxxxxxx&#x27;</span> (using password: YES)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>登录mysql，查看用户表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select host, password, user from mysql.user;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>恍然大悟，是最开始的授权指令后面的<strong>identified by “password”</strong> 导致的root密码和root开始设置的密码混淆了</p>
+<p><img src="https://picture-byan.obs.cn-east-3.myhuaweicloud.com//imgs_byan/image-20240421174724290.png" alt="image-20240421174724290"></p>
+<p>重新设置密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> password <span class="keyword">for</span> ipv6test@<span class="string">&#x27;%&#x27;</span> = password(<span class="string">&#x27;xxxxxxx&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>最后成功解决!!!</p>
 
       </div>
         <div class="support-author">
